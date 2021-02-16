@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/action_accueil"
-        android:enabled="true"
-        android:title="@string/button_navigation_menu_accueil"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/search_bar"
+        android:title="@string/search_bar"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"
+        />
+
     <item
-        android:id="@+id/action_store"
-        android:enabled="true"
-        android:title="@string/button_navigation_menu_store"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/account_button"
+        android:title="@string/account_button"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
     <item
-        android:id="@+id/action_librairie"
-        android:enabled="true"
-        android:title="@string/button_navigation_menu_librairie"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_compte"
-        android:enabled="true"
-        android:title="@string/button_navigation_menu_compte"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/settings_menu"
+        android:title="@string/settings_menu"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
 </menu>
-
-TEST
-TEST
-
