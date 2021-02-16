@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">ShareBook</string>
 
-    <!-- BAR DE NAVIGATION -->
-    <string name="button_navigation_menu_accueil">Accueil</string>
-    <string name="button_navigation_menu_store">Store</string>
-    <string name="button_navigation_menu_librairie">Librairie</string>
-    <string name="button_navigation_menu_compte">Compte</string>
+
+    <string name="hello">Hello World !</string>
+
 
 
 </resources>
