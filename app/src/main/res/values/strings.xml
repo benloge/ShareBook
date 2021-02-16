@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">ShareBook</string>
+    <string name="search_bar">Rechercher ici</string>
+    <string name="account_button">Compte</string>
+    <string name="settings_menu">Options</string>
 
-
-    <string name="hello">Hello World !</string>
 
 
 
