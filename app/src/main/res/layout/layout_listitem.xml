@@ -1,62 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:paddingTop="5dp">
 
-        <androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="4dp"
+        app:cardMaxElevation="2dp"
+        app:cardElevation="1dp"
+        android:layout_centerInParent="true"
+        >
+
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_height="match_parent"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+            <ImageView
+                android:id="@+id/image_book"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/livre_exemple_foreground" />
 
-                <ImageView
-                    android:id="@+id/image_book"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:scaleType="centerCrop"
-                    android:layout_centerHorizontal="true"
-                    android:src="@mipmap/livre_exemple" />
+            <TextView
+                android:id="@+id/titre"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="hello"
+                android:layout_below="@id/image_book"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                ></TextView>
 
-                <TextView
-                    android:id="@+id/titre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:text="hello"
-                    android:layout_below="@id/image_book"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    >
+        </RelativeLayout>
 
-                </TextView>
+    </androidx.cardview.widget.CardView>
 
-            </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        >
 
-        </androidx.cardview.widget.CardView>
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            >
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </RelativeLayout>
 
 </RelativeLayout>

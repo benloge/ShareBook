@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <color name="purple_200">#FFBB86FC</color>
-<color name="top_bar_color">#EDECEC</color>
 <color name="top_color">#000000</color>
 <color name="teal_200">#FF03DAC5</color>
 <color name="teal_700">#FF018786</color>
 <color name="bottom_color">#FF000000</color>
 <color name="white">#FFFFFF</color>
 <color name="dark">#2E2E2E</color>
+
+    //bar_navigation_bas
+    <color name="toolbar">#CBCBCB</color>
+    <color name="colorNaviFalse">#FF000000</color>
+    <color name="colorNaviEnable">#0477c2</color>
+
+    //top_toolbar
+    <color name="top_bar_color">#EDECEC</color>
 
 </resources>

@@ -3,6 +3,12 @@
     <string name="search_bar">Rechercher ici</string>
     <string name="account_button">Compte</string>
     <string name="settings_menu">Options</string>
+    
+    //bottom_bar
+    <string name="bottom_navigation_menu_accueil">Accueil</string>
+    <string name="bottom_navigation_menu_store">Store</string>
+    <string name="bottom_navigation_menu_biblio">Ma Bibliothèque</string>
+    <string name="bottom_navigation_menu_panier">Mon Panier</string>
 
 
 

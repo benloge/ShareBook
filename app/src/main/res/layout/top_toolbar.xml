@@ -13,14 +13,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" >
+        tools:context=".controller.MainActivity" >
 
         <ImageView
             android:id="@+id/sharebook_logo"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:src="@mipmap/sharebook_logo_foreground" />
+            android:src="@drawable/sharebook_logo_foreground" />
 
         <SearchView
             android:layout_width="280dp"

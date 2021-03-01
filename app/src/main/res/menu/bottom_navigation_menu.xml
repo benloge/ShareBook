@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_accueil"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_black_18dp"
+        android:title="@string/bottom_navigation_menu_accueil"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_store"
+        android:enabled="true"
+        android:icon="@drawable/baseline_store_black_18dp"
+        android:title="@string/bottom_navigation_menu_store"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_biblio"
+        android:enabled="true"
+        android:icon="@drawable/baseline_menu_book_black_18dp"
+        android:title="@string/bottom_navigation_menu_biblio"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_panier"
+        android:enabled="true"
+        android:icon="@drawable/baseline_local_grocery_store_black_18dp"
+        android:title="@string/bottom_navigation_menu_panier"
+        app:showAsAction="ifRoom" />
+
+</menu>

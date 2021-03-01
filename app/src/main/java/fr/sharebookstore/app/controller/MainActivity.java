@@ -1,4 +1,4 @@
-package fr.sharebookstore.app;
+package fr.sharebookstore.app.controller;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import fr.sharebookstore.app.R;
+import fr.sharebookstore.app.RecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
