@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,70 +9,87 @@
     <include layout="@layout/top_toolbar"></include>
     <include layout="@layout/bottom_toolbar"></include>
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize">
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BIENVENUE SUR SHAREBOOK"
-        android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textSize="40dp"
+        android:layout_height="675dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         >
 
-    </TextView>
-    <TextView
-        android:id="@+id/nouveaute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nouveaute"
-        android:layout_above="@+id/recyclerView"
-        android:layout_below="@id/welcome"
-        android:textSize="20dp"
-        android:layout_marginLeft="10dp"
-        >
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginBottom="?attr/actionBarSize">
 
-     </TextView>
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:text="BIENVENUE SUR SHAREBOOK"
+                android:layout_below="@+id/toolbar"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="40dp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:background="@drawable/biblioteque"
+                >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/welcome"
-        >
+            </TextView>
+            <TextView
+                android:id="@+id/nouveaute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nouveaute"
+                android:layout_above="@+id/recyclerView"
+                android:layout_below="@id/welcome"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
 
-    </androidx.recyclerview.widget.RecyclerView>
+             </TextView>
 
-        <TextView
-            android:id="@+id/tendance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tendance"
-            android:layout_above="@+id/recyclerView"
-            android:layout_below="@id/welcome"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nouveauteView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/welcome"
+                android:background="@drawable/back"
+                >
 
-        </TextView>
+            </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/tendance"
-        >
+            <TextView
+                android:id="@+id/tendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tendance"
+                android:layout_above="@+id/recyclerView"
+                android:layout_below="@id/welcome"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
 
-    </androidx.recyclerview.widget.RecyclerView>
+            </TextView>
 
-    </TableLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tendanceView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tendance"
+                android:background="@drawable/back"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </TableLayout>
+
+    </ScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
