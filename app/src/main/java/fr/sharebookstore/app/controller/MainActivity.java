@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
-
+    private ArrayList<String> mNames2 = new ArrayList<>();
+    private ArrayList<String> mImageUrls2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,40 +34,45 @@ public class MainActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
+        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
+        mNames.add("Bel-Ami");
 
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
 
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
-
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
-
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
-
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
-
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
-
-        mImageUrls.add("https://img-19.ccm2.net/ppaPB1I48R0LInb9Z8QBoUqXqSQ=/480x335/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg");
-        mNames.add("Exemple");
-
-        initRecyclerView();
+        initRecyclerView(R.id.recyclerView, mNames, mImageUrls);
+        initRecyclerView(R.id.recyclerView2, mNames2, mImageUrls2);
 
     }
-    private void initRecyclerView(){
+    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> image ){
         Log.d(TAG,  "initRecyclerView: init recyclerview");
 
         LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(i);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, mNames, mImageUrls);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image);
         recyclerView.setAdapter(adapter);
     }
 }

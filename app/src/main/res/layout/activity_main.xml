@@ -9,16 +9,70 @@
     <include layout="@layout/top_toolbar"></include>
     <include layout="@layout/bottom_toolbar"></include>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="?attr/actionBarSize">
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BIENVENUE SUR SHAREBOOK"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="40dp"
+        >
+
+    </TextView>
+    <TextView
+        android:id="@+id/nouveaute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nouveaute"
+        android:layout_above="@+id/recyclerView"
+        android:layout_below="@id/welcome"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        >
+
+     </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/welcome"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/tendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tendance"
+            android:layout_above="@+id/recyclerView"
+            android:layout_below="@id/welcome"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            >
+
+        </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tendance"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    </TableLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
