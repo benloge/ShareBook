@@ -23,7 +23,7 @@ public class BiblioActivity extends AppCompatActivity {
 
     private void setBottomNavigation() {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_accueil);
+        bottomNavigationView.setSelectedItemId(R.id.action_biblio);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected() {
                 return onNavigationItemSelected();

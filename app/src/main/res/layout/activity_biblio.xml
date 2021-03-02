@@ -6,4 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".controller.BiblioActivity">
 
+    <include layout="@layout/top_toolbar"></include>
+    <include layout="@layout/bottom_toolbar"></include>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
