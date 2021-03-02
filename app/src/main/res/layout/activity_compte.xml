@@ -7,6 +7,15 @@
     tools:context=".controller.CompteActivity">
 
     <include layout="@layout/top_toolbar"></include>
+
     <include layout="@layout/bottom_toolbar"></include>
+
+    <ListView
+        android:id="@+id/list_view_compte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:translationY="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

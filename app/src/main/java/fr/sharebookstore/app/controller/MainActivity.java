@@ -13,18 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.NetworkAsyncTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners{
 
     private static final String TAG = "MainActivity";
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<String> mNames2 = new ArrayList<>();
+    private ArrayList<String> mImageUrls2 = new ArrayList<>();
 
 
     @Override
@@ -32,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.executeHttpRequest("http://18.159.181.250/api/documents.php");
         getImages();
         setBottomNavigation();
     }
@@ -39,33 +47,79 @@ public class MainActivity extends AppCompatActivity {
     private void getImages(){
         Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
 
-        mImageUrls.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
+        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
+        mNames2.add("Les Aventures de Sherlock Holmes");
 
-        mImageUrls.add("http://18.159.181.250/image/5708.jpg");
-        mNames.add("Les Hauts de Hurle-vent");
-
-        mImageUrls.add("http://18.159.181.250/image/224.jpg");
-        mNames.add("La Chartreuse de Parme");
-
-        mImageUrls.add("http://18.159.181.250/image/5669.jpg");
-        mNames.add("Les Récits d'Adrien Zograffi - Volume II");
-
-
-        initRecyclerView();
+        initRecyclerView(R.id.recyclerView2, mNames2, mImageUrls2);
 
     }
-    private void initRecyclerView(){
+    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> image ){
         Log.d(TAG,  "initRecyclerView: init recyclerview");
 
         LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(i);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, mNames, mImageUrls);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void executeHttpRequest(String requete){
+        new NetworkAsyncTask(this).execute(requete);
+    }
+
+    public void onPreExecute() {
+        this.updateUIWhenStartingHTTPRequest();
+    }
+
+    public void doInBackground() { }
+
+    public void onPostExecute(String json) {
+        this.updateUIWhenStopingHTTPRequest(json);
+    }
+
+    // ------------------
+    //  UPDATE UI
+    // ------------------
+
+    private void updateUIWhenStartingHTTPRequest(){
+
+    }
+
+    private void updateUIWhenStopingHTTPRequest(String response){
+        JSONArray array = null;
+        try {
+            array = new JSONArray(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        for(int i=0; i < array.length(); i++)
+        {
+            try {
+                JSONObject object = array.getJSONObject(i);
+                mImageUrls.add(object.getString("Image"));
+                mNames.add(object.getString("Titre"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        initRecyclerView(R.id.recyclerView, mNames, mImageUrls);
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     private void setBottomNavigation() {

@@ -10,5 +10,27 @@
     <string name="bottom_navigation_menu_biblio">Ma Bibliothèque</string>
     <string name="bottom_navigation_menu_panier">Mon Panier</string>
 
+    //login
+    <string name="text_accounts">All Accounts</string>
+    <string name="hint_name">Nom</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Mot de Passe</string>
+    <string name="hint_confirm_password">Confirmer Mdp</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">S\'inscrire</string>
+    <string name="error_message_name">Entrer Nom Complet</string>
+    <string name="error_message_email">Entrer un Email valide</string>
+    <string name="error_message_age">Entre votre date de naissance</string>
+    <string name="error_message_password">Entrer votre Mdp</string>
+    <string name="success_message">Inscription Réussie</string>
+    <string name="text_not_member">Pas de compte ? Créer en un</string>
+    <string name="text_already_member">Déja membre? Login</string>
+    <string name="error_email_exists">l\'email existe déjà</string>
+    <string name="error_password_match">Les mot de passe ne correspond pas</string>
+    <string name="error_valid_email_password">Pseudo ou mot de passe incorrect</string>
+    <string name="action_settings">Paramètre</string>
+    <string name="text_hello">Bonjour,</string>
+    <string name="text_title">ShareBook</string>
+
 
 </resources>
