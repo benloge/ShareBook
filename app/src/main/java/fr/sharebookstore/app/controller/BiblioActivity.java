@@ -41,7 +41,7 @@ public class BiblioActivity extends AppCompatActivity {
                         break;
                     case R.id.action_store:
                         if (!classname.contains("StoreActivity")) {
-                            // startActivity(new Intent(BiblioActivity.this, StoreActivity.class));
+                            startActivity(new Intent(BiblioActivity.this, StoreActivity.class));
                         }
 
                         break;

@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -38,24 +38,16 @@
                 android:id="@+id/titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="200dp"
                 android:text="hello"
+                android:textSize="20dp"
                 android:layout_below="@id/image_book"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:maxWidth="200dp"
                 ></TextView>
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
 
 </RelativeLayout>
