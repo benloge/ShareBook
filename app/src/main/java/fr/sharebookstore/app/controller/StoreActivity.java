@@ -21,8 +21,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.Navigation;
 
-public class StoreActivity extends AppCompatActivity {
+public class StoreActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView nouveaute_clickable;
     TextView tendance_clickable;
@@ -32,6 +33,7 @@ public class StoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
+        Navigation.SetTopToolbar(StoreActivity.this, this);
         setBottomNavigation();
         getImages();
 
@@ -151,4 +153,8 @@ public class StoreActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Navigation.OnclickTopToolbar(v,this);
+    }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.Navigation;
 import fr.sharebookstore.app.utils.NetworkAsyncTask;
 
 public class PanierActivity extends AppCompatActivity  implements View.OnClickListener{
@@ -34,16 +36,9 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panier);
-
-        Button buttonCompte = (Button) findViewById(R.id.CompteButton);
-
-        buttonCompte.setTag(0);
-
-        buttonCompte.setOnClickListener(this);
-
         setBottomNavigation();
+        Navigation.SetTopToolbar(PanierActivity.this, this);
     }
-
 
 
     private void setBottomNavigation() {
@@ -88,14 +83,7 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        int action = (int) v.getTag();
-        String classname = this.getClass().getName();
-        switch (action) {
-            case 0:
-                startActivity(new Intent(this, CompteActivity.class));
-                break;
-
-        }
+        Navigation.OnclickTopToolbar(v,this);
     }
 
 }
