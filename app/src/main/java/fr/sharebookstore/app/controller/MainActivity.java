@@ -2,11 +2,11 @@ package fr.sharebookstore.app.controller;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,8 +26,9 @@ import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
 import fr.sharebookstore.app.utils.Navigation;
 import fr.sharebookstore.app.utils.NetworkAsyncTask;
+import fr.sharebookstore.app.utils.NetworkRecyclerViewDocument;
 
-public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
 
@@ -64,54 +65,6 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
         setBottomNavigation();
 
         getImages();
-    }
-
-    private void executeHttpRequest(String requete){
-        new NetworkAsyncTask(this).execute(requete);
-    }
-
-    public void onPreExecute() {
-        this.updateUIWhenStartingHTTPRequest();
-    }
-
-    public void doInBackground() { }
-
-    public void onPostExecute(String json) {
-        this.updateUIWhenStopingHTTPRequest(json);
-    }
-
-    // ------------------
-    //  UPDATE UI
-    // ------------------
-
-    private void updateUIWhenStartingHTTPRequest(){
-
-    }
-
-    private void updateUIWhenStopingHTTPRequest(String response){
-        JSONArray array = null;
-        try {
-            array = new JSONArray(response);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        for(int i=0; i < array.length(); i++)
-        {
-            try {
-                JSONObject object = array.getJSONObject(i);
-                mImageUrls.add(object.getString("Image"));
-                mNames.add(object.getString("Titre"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        initRecyclerView(R.id.nouveauteView, mNames, mImageUrls);
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
 
     private void setBottomNavigation() {
@@ -159,22 +112,11 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
     private void getImages(){
         Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        this.executeHttpRequest("http://18.159.181.250/api/documents.php");
+        String requeteNouvaute = "http://18.159.181.250/api/documents.php";
+        String requeteTendance = "http://18.159.181.250/api/documents.php";
 
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-
-        initRecyclerView(R.id.tendanceView, mNames2, mImageUrls2);
+        new NetworkRecyclerViewDocument(this, MainActivity.this, R.id.nouveauteView).execute(requeteNouvaute);
+        new NetworkRecyclerViewDocument(this, MainActivity.this, R.id.tendanceView).execute(requeteTendance);
 
 
     }
