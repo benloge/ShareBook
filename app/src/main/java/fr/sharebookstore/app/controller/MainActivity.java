@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.executeHttpRequest("http://18.159.181.250/api/documents.php");
+
         setBottomNavigation();
 
         getImages();
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
                 e.printStackTrace();
             }
         }
-        initRecyclerView(R.id.recyclerView, mNames, mImageUrls);
+        initRecyclerView(R.id.nouveauteView, mNames, mImageUrls);
 
     }
 
@@ -138,20 +138,7 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
     private void getImages(){
         Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
+        this.executeHttpRequest("http://18.159.181.250/api/documents.php");
 
         mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
         mNames2.add("Les Aventures de Sherlock Holmes");
@@ -166,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
         mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
         mNames2.add("Les Aventures de Sherlock Holmes");
 
-        initRecyclerView(R.id.nouveauteView, mNames, mImageUrls);
         initRecyclerView(R.id.tendanceView, mNames2, mImageUrls2);
 
 

@@ -7,85 +7,92 @@ import java.util.Date;
  */
 public class User {
 
-    private int mId;
-    private String mPseudo;
-    private String mNom;
-    private String mPrenom;
-    private String memail;
-    private String mTel;
-    private Date mDate_de_Naissance;
-    private int mGenre;
-    private String mMdp;
+    private static int mId;
+    private static String mPseudo;
+    private static String mNom;
+    private static String mPrenom;
+    private static String memail;
+    private static String mTel;
+    private static Date mDate_de_Naissance;
+    private static int mGenre;
+    private static String mMdp;
+    private static boolean mStatus = Boolean.FALSE;
 
-    public int getmId() {
+
+    public static int getmId() {
         return mId;
     }
 
-    public void setmId(int mId) {
-        this.mId = mId;
+    public static void setmId(int mId) {
+        mId = mId;
     }
 
-    public String getmPseudo() {
+    public static String getmPseudo() {
         return mPseudo;
     }
 
-    public void setmPseudo(String mPseudo) {
-        this.mPseudo = mPseudo;
+    public static void setmPseudo(String mPseudo) {
+        mPseudo = mPseudo;
     }
 
-    public String getmNom() {
+    public static String getmNom() {
         return mNom;
     }
 
-    public void setmNom(String mNom) {
-        this.mNom = mNom;
+    public static void setmNom(String mNom) {
+        mNom = mNom;
     }
 
-    public String getmPrenom() {
+    public static String getmPrenom() {
         return mPrenom;
     }
 
-    public void setmPrenom(String mPrenom) {
-        this.mPrenom = mPrenom;
+    public static void setmPrenom(String mPrenom) {
+        mPrenom = mPrenom;
     }
 
-    public String getMemail() {
+    public static String getMemail() {
         return memail;
     }
 
-    public void setMemail(String memail) {
-        this.memail = memail;
+    public static void setmemail(String memail) {memail = memail;
     }
 
-    public String getmTel() {
+    public static String getmTel() {
         return mTel;
     }
 
-    public void setmTel(String mTel) {
-        this.mTel = mTel;
+    public static void setmTel(String mTel) {
+        mTel = mTel;
     }
 
-    public Date getmDate_de_Naissance() {
+    public static Date getmDate_de_Naissance() {
         return mDate_de_Naissance;
     }
 
-    public void setmDate_de_Naissance(Date mDate_de_Naissance) {
-        this.mDate_de_Naissance = mDate_de_Naissance;
+    public static void setmDate_de_Naissance(Date mDate_de_Naissance) { mDate_de_Naissance = mDate_de_Naissance;
     }
 
-    public int getmGenre() {
+    public static int getmGenre() {
         return mGenre;
     }
 
-    public void setmGenre(int mGenre) {
-        this.mGenre = mGenre;
+    public static void setmGenre(int mGenre) {
+        mGenre = mGenre;
     }
 
-    public String getmMdp() {
+    public static String getmMdp() {
         return mMdp;
     }
 
-    public void setmMdp(String mMdp) {
-        this.mMdp = mMdp;
+    public static void setmMdp(String mMdp) { mMdp = mMdp;
+    }
+
+    public static boolean ismStatus() {
+        return mStatus;
+    }
+
+    public static void setmStatus(boolean mStatus) {
+        mStatus = mStatus;
     }
 }
