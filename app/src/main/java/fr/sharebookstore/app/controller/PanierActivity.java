@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,7 +24,7 @@ import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
 import fr.sharebookstore.app.utils.NetworkAsyncTask;
 
-public class PanierActivity extends AppCompatActivity  implements NetworkAsyncTask.Listeners{
+public class PanierActivity extends AppCompatActivity  implements View.OnClickListener{
 
     private static final String TAG = "PanierActivity";
     private ArrayList<String> mNames = new ArrayList<>();
@@ -33,75 +35,16 @@ public class PanierActivity extends AppCompatActivity  implements NetworkAsyncTa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panier);
 
-        this.executeHttpRequest("http://18.159.181.250/api/documents.php");
+        Button buttonCompte = (Button) findViewById(R.id.CompteButton);
+
+        buttonCompte.setTag(0);
+
+        buttonCompte.setOnClickListener(this);
+
         setBottomNavigation();
     }
 
-    private void getImages(){
-        Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        initRecyclerView(R.id.TestPanier);
-
-    }
-
-
-    private void initRecyclerView(int Toto){
-        Log.d(TAG,  "initRecyclerView: init recyclerview");
-
-        LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(Toto);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, mNames, mImageUrls);
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void executeHttpRequest(String requete){
-        new NetworkAsyncTask(this).execute(requete);
-    }
-
-    public void onPreExecute() {
-        this.updateUIWhenStartingHTTPRequest();
-    }
-
-    public void doInBackground() { }
-
-    public void onPostExecute(String json) {
-        this.updateUIWhenStopingHTTPRequest(json);
-    }
-
-    // ------------------
-    //  UPDATE UI
-    // ------------------
-
-    private void updateUIWhenStartingHTTPRequest(){
-
-    }
-
-    private void updateUIWhenStopingHTTPRequest(String response){
-        JSONArray array = null;
-        try {
-            array = new JSONArray(response);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        for(int i=0; i < array.length(); i++)
-        {
-            try {
-                JSONObject object = array.getJSONObject(i);
-                mImageUrls.add(object.getString("Image"));
-                mNames.add(object.getString("Titre"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        getImages();
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
 
     private void setBottomNavigation() {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
@@ -142,4 +85,17 @@ public class PanierActivity extends AppCompatActivity  implements NetworkAsyncTa
             }
         });
     }
+
+    @Override
+    public void onClick(View v) {
+        int action = (int) v.getTag();
+        String classname = this.getClass().getName();
+        switch (action) {
+            case 0:
+                startActivity(new Intent(this, CompteActivity.class));
+                break;
+
+        }
+    }
+
 }

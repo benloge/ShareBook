@@ -16,4 +16,13 @@
     //top_toolbar
     <color name="top_bar_color">#EDECEC</color>
 
+    //login
+    <color name="colorPrimary">#51d8c7</color>
+    <color name="colorPrimaryDark">#51d8c7</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorBackground">#413e4f</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextHint">#51d8c7</color>
+    <color name="color_erreur">#B30729</color>
+
 </resources>

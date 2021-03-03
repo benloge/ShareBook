@@ -13,21 +13,86 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.NetworkAsyncTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners{
+
+    private static final String TAG = "MainActivity";
+
+    //vars
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<String> mNames2 = new ArrayList<>();
+    private ArrayList<String> mImageUrls2 = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         setBottomNavigation();
 
         getImages();
     }
+
+    private void executeHttpRequest(String requete){
+        new NetworkAsyncTask(this).execute(requete);
+    }
+
+    public void onPreExecute() {
+        this.updateUIWhenStartingHTTPRequest();
+    }
+
+    public void doInBackground() { }
+
+    public void onPostExecute(String json) {
+        this.updateUIWhenStopingHTTPRequest(json);
+    }
+
+    // ------------------
+    //  UPDATE UI
+    // ------------------
+
+    private void updateUIWhenStartingHTTPRequest(){
+
+    }
+
+    private void updateUIWhenStopingHTTPRequest(String response){
+        JSONArray array = null;
+        try {
+            array = new JSONArray(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        for(int i=0; i < array.length(); i++)
+        {
+            try {
+                JSONObject object = array.getJSONObject(i);
+                mImageUrls.add(object.getString("Image"));
+                mNames.add(object.getString("Titre"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        initRecyclerView(R.id.nouveauteView, mNames, mImageUrls);
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
     private void setBottomNavigation() {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_accueil);
@@ -48,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_store:
                         if (!classname.contains("StoreActivity")) {
-                            startActivity(new Intent(MainActivity.this, StoreActivity.class));
+                           // startActivity(new Intent(MainActivity.this, StoreActivity.class));
                         }
 
                         break;
@@ -68,31 +133,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private static final String TAG = "MainActivity";
 
-    //vars
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
-    private ArrayList<String> mNames2 = new ArrayList<>();
-    private ArrayList<String> mImageUrls2 = new ArrayList<>();
 
     private void getImages(){
         Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
+        this.executeHttpRequest("http://18.159.181.250/api/documents.php");
 
         mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
         mNames2.add("Les Aventures de Sherlock Holmes");
@@ -107,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
         mNames2.add("Les Aventures de Sherlock Holmes");
 
-        initRecyclerView(R.id.nouveauteView, mNames, mImageUrls);
         initRecyclerView(R.id.tendanceView, mNames2, mImageUrls2);
 
 

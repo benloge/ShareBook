@@ -4,60 +4,170 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import fr.sharebookstore.app.R;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+import fr.sharebookstore.app.R;
+import fr.sharebookstore.app.model.User;
+import fr.sharebookstore.app.utils.GestionUser;
+import fr.sharebookstore.app.utils.InputValidation;
+import fr.sharebookstore.app.utils.NetworkAsyncTask;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, NetworkAsyncTask.Listeners {
+
+    private final AppCompatActivity activity = LoginActivity.this;
+
+    private EditText editPseudo;
+    private EditText editMdp;
+    private Button buttonlogin;
+
+    private TextView LoginErreur;
+    private TextView PseudoErreur;
+    private TextView MdpErreur;
+
+    private InputValidation inputValidation;
+    public User user;
+
+    private String pseudo;
+    private String Password;
+
+    private SharedPreferences mPreferences;
+
+    public static final String PREF_KEY_ID = "PREF_KEY_ID";
+    public static final String PREF_KEY_PSEUDO = "PREF_KEY_PSEUDO";
+    public static final String PREF_KEY_NOM = "PREF_KEY_NOM";
+    public static final String PREF_KEY_PRENOM = "PREF_KEY_PRENOM";
+    public static final String PREF_KEY_EMAIL = "PREF_KEY_EMAIL";
+    public static final String PREF_KEY_TEL = "PREF_KEY_TEL";
+    public static final String PREF_KEY_GENRE = "PREF_KEY_GENRE";
+    public static final String PREF_KEY_PASSWORD = "PREF_KEY_PASSWORD";
+    public static final String PREF_KEY_STATUS = "PREF_KEY_STATUS";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setBottomNavigation();
+        editPseudo = (EditText) findViewById(R.id.editText_Pseudo);
+        editMdp = (EditText) findViewById(R.id.editText_Mdp);
+
+        buttonlogin = (Button) findViewById(R.id.button_login);
+
+        LoginErreur = (TextView) findViewById(R.id.Login_erreur);
+        PseudoErreur = (TextView) findViewById(R.id.Pseudo_erreur);
+        MdpErreur = (TextView) findViewById(R.id.Mdp_erreur);
+
+        mPreferences = getPreferences(MODE_PRIVATE);
+
+        initListeners();
+        initObject();
     }
 
-    private void setBottomNavigation() {
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_accueil);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            public boolean onNavigationItemSelected() {
-                return onNavigationItemSelected();
+    private void initListeners() {
+        buttonlogin.setOnClickListener(this);
+    }
+
+    private void initObject() {
+        user = new User();
+        inputValidation = new InputValidation(activity);
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_login:
+                verifyFromSQLite();
+                break;
+            default:
+        }
+    }
+
+    private void verifyFromSQLite() {
+        if (!inputValidation.isInputEditTextFilled(editPseudo, PseudoErreur, getString(R.string.error_message_email))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(editMdp, MdpErreur, getString(R.string.error_message_email))) {
+            return;
+        }
+        pseudo = editPseudo.getText().toString().trim();
+        Password = editMdp.getText().toString().trim();
+        executeUserCheckRequest("http://18.159.181.250/api/utilisateur.php?action=getuser&pseudo="+pseudo+"&mdp="+Password);
+    }
+
+    private void executeUserCheckRequest(String requete){
+        new NetworkAsyncTask(this).execute(requete);
+    }
+
+    public void onPreExecute() {
+        this.updateUIWhenStartingHTTPRequest();
+    }
+
+    public void doInBackground() { }
+
+    public void onPostExecute(String json) {
+        this.updateUIWhenStopingHTTPRequest(json);
+    }
+
+    // ------------------
+    //  UPDATE UI
+    // ------------------
+
+    private void updateUIWhenStartingHTTPRequest(){
+
+    }
+
+    private void updateUIWhenStopingHTTPRequest(String response){
+        if (!response.contains("[]")) {
+            JSONArray array = null;
+            try {
+                array = new JSONArray(response);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            for (int i = 0; i < array.length(); i++) {
+                try {
+                    JSONObject object = array.getJSONObject(i);
+                    mPreferences.edit().putInt(PREF_KEY_ID, object.getInt("ID_Utilisateur")).apply();
+                    mPreferences.edit().putString(PREF_KEY_PSEUDO, object.getString("Pseudo")).apply();
+                    mPreferences.edit().putString(PREF_KEY_NOM, object.getString("Nom")).apply();
+                    mPreferences.edit().putString(PREF_KEY_PRENOM, object.getString("Prenom")).apply();
+                    mPreferences.edit().putString(PREF_KEY_EMAIL, object.getString("Email")).apply();
+                    mPreferences.edit().putString(PREF_KEY_TEL, object.getString("Tel")).apply();
+                    mPreferences.edit().putInt(PREF_KEY_GENRE, object.getInt("Genre")).apply();
+                    mPreferences.edit().putString(PREF_KEY_PASSWORD, Password).apply();
+                    mPreferences.edit().putBoolean(PREF_KEY_STATUS,Boolean.TRUE);
 
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String classname = this.getClass().getName();
-                switch (item.getItemId()) {
-                    case R.id.action_accueil:
-                        if (!classname.contains("MainActivity")) {
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_store:
-                        if (!classname.contains("StoreActivity")) {
-                            // startActivity(new Intent(LoginActivity.this, StoreActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_biblio:
-                        if (!classname.contains("BiblioActivity")) {
-                            startActivity(new Intent(LoginActivity.this, BiblioActivity.class));
-                        }
-                        break;
-                    case R.id.action_panier:
-                        if (!classname.contains("PanierActivity")) {
-                            startActivity(new Intent(LoginActivity.this, PanierActivity.class));
-                        }
-                        break;
+                    //mImageUrls.add(object.getString("Image"));
+                    //mNames.add(object.getString("Titre"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                return true;
             }
-        });
+            LoginErreur.setText("Bonjour "+mPreferences.getString(PREF_KEY_PRENOM, null));
+            startActivity(new Intent(this, MainActivity.class));
+
+        }
+        else {
+            LoginErreur.setText(R.string.error_valid_email_password);
+        }
+
     }
+
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+
+
 }
