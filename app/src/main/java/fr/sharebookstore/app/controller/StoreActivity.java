@@ -4,28 +4,55 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.MenuItem;
-
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
-
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.RecyclerViewAdapter;
 
 public class StoreActivity extends AppCompatActivity {
+
+    TextView nouveaute_clickable;
+    TextView tendance_clickable;
+    TextView auteur_clickable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
         setBottomNavigation();
-
         getImages();
+
+        nouveaute_clickable=(TextView)findViewById(R.id.store_nouveaute);
+        nouveaute_clickable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(StoreActivity.this,NouveauteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tendance_clickable=(TextView)findViewById(R.id.store_tendance);
+        tendance_clickable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(StoreActivity.this,TendanceActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void setBottomNavigation() {

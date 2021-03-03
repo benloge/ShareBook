@@ -11,40 +11,39 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="675dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize"
         >
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:layout_marginBottom="?attr/actionBarSize">
+           >
 
             <TextView
                 android:id="@+id/welcome"
                 android:layout_width="wrap_content"
-                android:layout_height="250dp"
+                android:layout_height="200dp"
                 android:text="BIENVENUE SUR SHAREBOOK"
-                android:layout_below="@+id/toolbar"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 android:textColor="@color/white"
-                android:textStyle="italic"
+                android:fontFamily="@font/keepcalm"
                 android:background="@drawable/biblioteque"
                 >
 
             </TextView>
+
             <TextView
-                android:id="@+id/nouveaute"
+                android:id="@+id/store_nouveaute"
+                android:text="Nouveaute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nouveaute"
-                android:layout_above="@+id/recyclerView"
-                android:layout_below="@id/welcome"
-                android:textSize="20dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 >
@@ -63,13 +62,13 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
-                android:id="@+id/tendance"
+                android:id="@+id/store_tendance"
+                android:text="Tendance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tendance"
-                android:layout_above="@+id/recyclerView"
-                android:layout_below="@id/welcome"
-                android:textSize="20dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 >
@@ -86,6 +85,24 @@
                 >
 
             </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+            <Button
+                android:id="@+id/pub"
+                android:text="Des millions de livres à porté de main"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/keepcalm"
+                android:background="@drawable/pub_abo"
+                >
+
+            </Button>
 
         </TableLayout>
 

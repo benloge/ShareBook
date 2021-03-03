@@ -11,254 +11,346 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="675dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize"
         >
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize">
-
-        <TextView
-            android:id="@+id/store_nouveaute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nouveaute"
-            android:layout_above="@+id/recyclerView"
-            android:layout_below="@id/welcome"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            >
-
-        </TextView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/store_nouveauteView"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/welcome"
-            android:background="@drawable/back"
+            android:layout_height="match_parent"
             >
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/store_tendance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tendance"
-            android:layout_above="@+id/recyclerView"
-            android:layout_below="@id/welcome"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            >
-
-        </TextView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/store_tendanceView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/store_endance"
-            android:background="@drawable/back"
-            >
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/genre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Genre"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            >
-
-        </TextView>
-
-        <HorizontalScrollView>
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_scrollLeft">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/store_nouveaute"
+                android:text="Nouveaute"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
 
-                <Button
-                    android:id="@+id/store_fiction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fiction"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
+            </TextView>
 
-                <Button
-                    android:id="@+id/store_horreur"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Horreur"
-                    android:background="@drawable/roundbutton"
-                    android:paddingHorizontal="10dp"
-                    android:layout_marginRight="20dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/store_nouveauteView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/welcome"
+                android:background="@drawable/back"
+                >
 
-                <Button
-                    android:id="@+id/store_policier"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Policier"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginRight="20dp"/>
+            </androidx.recyclerview.widget.RecyclerView>
 
-                <Button
-                    android:id="@+id/store_fantaisie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fantaisie"
-                    android:background="@drawable/roundbutton"
-                    android:paddingHorizontal="10dp"
-                    android:layout_marginRight="20dp"/>
-
-                <Button
-                    android:id="@+id/store_thriller"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Thriller"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginRight="20dp"/>
-
-                <Button
-                    android:id="@+id/store_aventure"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Aventure"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginRight="20dp"/>
-
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            android:id="@+id/store_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            >
-
-        </TextView>
-
-        <HorizontalScrollView>
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_scrollLeft">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/genre"
+                android:text="Genre"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
 
-                <Button
-                    android:id="@+id/store_roman"
+            </TextView>
+
+            <HorizontalScrollView>
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_scrollLeft">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Roman"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/store_bd"
+                    <Button
+                        android:id="@+id/store_fiction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fiction"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_horreur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundbutton"
+                        android:text="Horreur" />
+
+                    <Button
+                        android:id="@+id/store_policier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundbutton"
+                        android:text="Policier" />
+
+                    <Button
+                        android:id="@+id/store_fantaisie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fantaisie"
+                        android:background="@drawable/roundbutton"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_thriller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Thriller"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_aventure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Aventure"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/store_tendance"
+                android:text="Tendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/store_tendanceView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/store_endance"
+                android:background="@drawable/back"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/store_type"
+                android:text="Type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
+
+            </TextView>
+
+            <HorizontalScrollView>
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_scrollLeft">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bande Déssiné"
-                    android:background="@drawable/roundbutton"
-                    android:paddingHorizontal="10dp"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/store_nouvelle"
+                    <Button
+                        android:id="@+id/store_roman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Roman"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_bd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bande Déssiné"
+                        android:background="@drawable/roundbutton"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_nouvelle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nouvelle"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_biographie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Biographie"
+                        android:background="@drawable/roundbutton"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_conte"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Conte"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/store_epopee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Epopée"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/store_auteur"
+                android:text="Auteur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/keepcalm"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
+
+            </TextView>
+
+            <HorizontalScrollView>
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_scrollLeft">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nouvelle"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/store_biographie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Biographie"
-                    android:background="@drawable/roundbutton"
-                    android:paddingHorizontal="10dp"
-                    android:layout_marginRight="20dp"/>
+                    <Button
+                        android:id="@+id/auteur1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="auteur1"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"/>
 
-                <Button
-                    android:id="@+id/store_conte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Conte"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginRight="20dp"/>
+                    <Button
+                        android:id="@+id/auteur2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="auteur2"
+                        android:background="@drawable/roundbutton"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginRight="20dp"/>
 
-                <Button
-                    android:id="@+id/store_epopee"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Epopée"
-                    android:background="@drawable/roundbutton"
-                    android:layout_marginRight="20dp"/>
+                    <Button
+                        android:id="@+id/auteur3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="auteur3"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/auteur4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="auteur4"
+                        android:background="@drawable/roundbutton"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/auteur5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="auteur5"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
+
+                    <Button
+                        android:id="@+id/auteur6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="auteur6"
+                        android:background="@drawable/roundbutton"
+                        android:layout_marginRight="20dp"/>
 
 
-            </LinearLayout>
-        </HorizontalScrollView>
+                </LinearLayout>
+            </HorizontalScrollView>
 
 
-
-    </TableLayout>
+        </TableLayout>
 
     </ScrollView>
 
