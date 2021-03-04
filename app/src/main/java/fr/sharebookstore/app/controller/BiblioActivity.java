@@ -54,8 +54,7 @@ public class BiblioActivity extends AppCompatActivity implements View.OnClickLis
             String requeteMaBibliotheque = "http://18.159.181.250/api/utilisateur.php?action=getuserdocument&pseudo=" + pseudo + "&mdp=" + password;
             new NetworkRecyclerViewDocument(this, BiblioActivity.this, R.id.Biblio_MesAchat, "ListVertical").execute(requeteMaBibliotheque);
         } else {
-            startActivityForResult(new Intent(BiblioActivity.this,LoginActivity.class), EDIT_CODE);
-            this.onDestroy();
+            startActivity(new Intent(BiblioActivity.this,LoginActivity.class));
         }
 
 
