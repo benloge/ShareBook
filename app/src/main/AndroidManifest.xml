@@ -3,6 +3,7 @@
     package="fr.sharebookstore.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,13 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShareBook"
         android:usesCleartextTraffic="true">
-        <activity android:name=".controller.TendanceActivity"></activity>
+        <activity android:name=".controller.BookViewActivity"></activity>
+        <activity android:name=".controller.TendanceActivity" />
         <activity android:name=".controller.NouveauteActivity" />
         <activity android:name=".controller.StoreActivity" />
-        <activity android:name=".controller.BiblioActivity"></activity>
-        <activity android:name=".controller.PanierActivity"></activity>
-        <activity android:name=".controller.CompteActivity"></activity>
-        <activity android:name=".controller.LoginActivity"></activity>
+        <activity
+            android:name=".controller.BiblioActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".controller.PanierActivity" />
+        <activity android:name=".controller.CompteActivity" />
+        <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

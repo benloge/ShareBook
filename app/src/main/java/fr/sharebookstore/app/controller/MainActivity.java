@@ -2,7 +2,6 @@ package fr.sharebookstore.app.controller;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,16 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
-import fr.sharebookstore.app.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.RecyclerViewAdapter;
 import fr.sharebookstore.app.utils.Navigation;
-import fr.sharebookstore.app.utils.NetworkAsyncTask;
 import fr.sharebookstore.app.utils.NetworkRecyclerViewDocument;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,54 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mPreferences = getSharedPreferences("user",MODE_PRIVATE);
-        //mPreferences = getPreferences(MODE_PRIVATE);
 
 
         Navigation.SetTopToolbar(MainActivity.this, this);
         setBienvenue();
-        setBottomNavigation();
+        Navigation.setBottomNavigation(MainActivity.this,this,R.id.action_accueil);
 
         getImages();
-    }
-
-    private void setBottomNavigation() {
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_accueil);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            public boolean onNavigationItemSelected() {
-                return onNavigationItemSelected();
-            }
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String classname = this.getClass().getName();
-                switch (item.getItemId()) {
-                    case R.id.action_accueil:
-                        if (!classname.contains("MainActivity")) {
-                            startActivity(new Intent(MainActivity.this, MainActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_store:
-                        if (!classname.contains("StoreActivity")) {
-                           startActivity(new Intent(MainActivity.this, StoreActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_biblio:
-                        if (!classname.contains("BiblioActivity")) {
-                            startActivity(new Intent(MainActivity.this, BiblioActivity.class));
-                        }
-                        break;
-                    case R.id.action_panier:
-                        if (!classname.contains("PanierActivity")) {
-                            startActivity(new Intent(MainActivity.this, PanierActivity.class));
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
 
@@ -115,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String requeteNouvaute = "http://18.159.181.250/api/documents.php";
         String requeteTendance = "http://18.159.181.250/api/documents.php";
 
-        new NetworkRecyclerViewDocument(this, MainActivity.this, R.id.nouveauteView).execute(requeteNouvaute);
-        new NetworkRecyclerViewDocument(this, MainActivity.this, R.id.tendanceView).execute(requeteTendance);
+        new NetworkRecyclerViewDocument(this, MainActivity.this, R.id.nouveauteView,"ListHorizontal").execute(requeteNouvaute);
+        new NetworkRecyclerViewDocument(this, MainActivity.this, R.id.tendanceView,"ListHorizontal").execute(requeteTendance);
 
 
     }
@@ -126,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
         RecyclerView recyclerView = findViewById(i);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image, "Product");
         recyclerView.setAdapter(adapter);
     }
 

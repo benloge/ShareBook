@@ -3,6 +3,7 @@ package fr.sharebookstore.app.controller;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class CompteActivity extends AppCompatActivity implements View.OnClickLis
     private ArrayList<String> arrayList=new ArrayList<>();
 
     private SharedPreferences mPreferences;
+    private Activity myActivity;
 
     public static final String PREF_KEY_ID = "PREF_KEY_ID";
     public static final String PREF_KEY_PSEUDO = "PREF_KEY_PSEUDO";
@@ -44,48 +46,8 @@ public class CompteActivity extends AppCompatActivity implements View.OnClickLis
         mPreferences = getSharedPreferences("user",MODE_PRIVATE);
 
         setViewList();
-        setBottomNavigation();
+        Navigation.setBottomNavigation(CompteActivity.this,this,R.id.action_accueil);
         Navigation.SetTopToolbar(CompteActivity.this, this);
-    }
-
-    private void setBottomNavigation() {
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_accueil);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            public boolean onNavigationItemSelected() {
-                return onNavigationItemSelected();
-            }
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String classname = this.getClass().getName();
-                switch (item.getItemId()) {
-                    case R.id.action_accueil:
-                        if (!classname.contains("MainActivity")) {
-                            startActivity(new Intent(CompteActivity.this, MainActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_store:
-                        if (!classname.contains("StoreActivity")) {
-                            // startActivity(new Intent(CompteActivity.this, StoreActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_biblio:
-                        if (!classname.contains("BiblioActivity")) {
-                            startActivity(new Intent(CompteActivity.this, BiblioActivity.class));
-                        }
-                        break;
-                    case R.id.action_panier:
-                        if (!classname.contains("PanierActivity")) {
-                            startActivity(new Intent(CompteActivity.this, PanierActivity.class));
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     private void setViewList() {

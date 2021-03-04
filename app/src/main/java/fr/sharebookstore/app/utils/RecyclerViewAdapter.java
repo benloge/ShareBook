@@ -1,6 +1,7 @@
-package fr.sharebookstore.app;
+package fr.sharebookstore.app.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import fr.sharebookstore.app.R;
+import fr.sharebookstore.app.controller.BookViewActivity;
+import fr.sharebookstore.app.controller.CompteActivity;
+import fr.sharebookstore.app.controller.ProductActivity;
+
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -25,11 +31,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private Context mContext;
+    private String mType;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, String Type) {
         mNames = names;
         mImageUrls = imageUrls;
         mContext = context;
+        mType = Type;
     }
 
     @Override
@@ -53,7 +61,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on an image:" +mNames.get(position));
-                Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
+                switch (mType) {
+                    case "Lecture":
+                        mContext.startActivity(new Intent(mContext, BookViewActivity.class));
+                        break;
+                    case "Store":
+                        Intent intent = new Intent(mContext, ProductActivity.class);
+                        intent.putExtra("Product_ID", mNames.get(position));
+                        mContext.startActivity(intent);
+                    default:
+                        Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

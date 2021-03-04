@@ -3,6 +3,7 @@ package fr.sharebookstore.app.controller;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -161,7 +162,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
            // LoginErreur.setText("Bonjour "+mPreferences.getString(PREF_KEY_PRENOM, null));
             //startActivity(new Intent(this, MainActivity.class));
-            setResult(RESULT_OK);
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
 
         }

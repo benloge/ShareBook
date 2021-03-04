@@ -2,29 +2,18 @@ package fr.sharebookstore.app.controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
-import fr.sharebookstore.app.RecyclerViewAdapter;
 import fr.sharebookstore.app.utils.Navigation;
-import fr.sharebookstore.app.utils.NetworkAsyncTask;
 
 public class PanierActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -36,7 +25,7 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panier);
-        setBottomNavigation();
+        Navigation.setBottomNavigation(PanierActivity.this,this,R.id.action_panier);
         Navigation.SetTopToolbar(PanierActivity.this, this);
     }
 
