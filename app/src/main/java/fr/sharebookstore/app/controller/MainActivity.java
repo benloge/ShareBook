@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NetworkAsyncTask.
                         break;
                     case R.id.action_store:
                         if (!classname.contains("StoreActivity")) {
-                           // startActivity(new Intent(MainActivity.this, StoreActivity.class));
+                           startActivity(new Intent(MainActivity.this, StoreActivity.class));
                         }
 
                         break;
