@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,4 +9,102 @@
     <include layout="@layout/top_toolbar"></include>
     <include layout="@layout/bottom_toolbar"></include>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/titre"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
+            android:text="Titre"
+            android:textColor="#050505"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"></TextView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+        <TextView
+            android:id="@+id/Product_Auteur"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginLeft="5dp"
+            android:text="Résumé :"
+            android:textColor="#CA9C3F"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"></TextView>
+        <TextView
+            android:id="@+id/Product_Parution"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="5dp"
+            android:text="Date de parution :"
+            android:textColor="#FFBF00"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"></TextView>
+        <TextView
+            android:id="@+id/Product_Page"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="5dp"
+            android:text="Nombre de page :"
+            android:textColor="#58C2EC"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"></TextView>
+        <TextView
+            android:id="@+id/Product_Langue"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginLeft="5dp"
+            android:text=" Langue :"
+            android:textColor="#E44747"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="63dp">
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Achat"
+                />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:gravity="end"
+                android:text="Location" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="45dp"
+                android:gravity="end"
+                android:text="Abonnement" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/avis"
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
+            android:text="Avis"
+            android:textColor="#050505"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+    </RelativeLayout>

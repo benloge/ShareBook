@@ -3,6 +3,7 @@ package fr.sharebookstore.app.controller;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.model.User;
 import fr.sharebookstore.app.utils.GestionUser;
 import fr.sharebookstore.app.utils.InputValidation;
+import fr.sharebookstore.app.utils.Navigation;
 import fr.sharebookstore.app.utils.NetworkAsyncTask;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, NetworkAsyncTask.Listeners {
@@ -69,8 +71,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         PseudoErreur = (TextView) findViewById(R.id.Pseudo_erreur);
         MdpErreur = (TextView) findViewById(R.id.Mdp_erreur);
 
-        mPreferences = getPreferences(MODE_PRIVATE);
+        mPreferences = getSharedPreferences("user",MODE_PRIVATE);
 
+        Navigation.SetTopToolbar(LoginActivity.this, this);
         initListeners();
         initObject();
     }
@@ -91,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             default:
         }
+        Navigation.SetTopToolbar(LoginActivity.this, this);
     }
 
     private void verifyFromSQLite() {
@@ -138,15 +142,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             for (int i = 0; i < array.length(); i++) {
                 try {
                     JSONObject object = array.getJSONObject(i);
-                    mPreferences.edit().putInt(PREF_KEY_ID, object.getInt("ID_Utilisateur")).apply();
-                    mPreferences.edit().putString(PREF_KEY_PSEUDO, object.getString("Pseudo")).apply();
-                    mPreferences.edit().putString(PREF_KEY_NOM, object.getString("Nom")).apply();
-                    mPreferences.edit().putString(PREF_KEY_PRENOM, object.getString("Prenom")).apply();
-                    mPreferences.edit().putString(PREF_KEY_EMAIL, object.getString("Email")).apply();
-                    mPreferences.edit().putString(PREF_KEY_TEL, object.getString("Tel")).apply();
-                    mPreferences.edit().putInt(PREF_KEY_GENRE, object.getInt("Genre")).apply();
-                    mPreferences.edit().putString(PREF_KEY_PASSWORD, Password).apply();
-                    mPreferences.edit().putBoolean(PREF_KEY_STATUS,Boolean.TRUE);
+                    SharedPreferences.Editor editor = mPreferences.edit();
+                    editor.putInt(PREF_KEY_ID, object.getInt("ID_Utilisateur"));
+                    editor.putString(PREF_KEY_PSEUDO, object.getString("Pseudo"));
+                    editor.putString(PREF_KEY_NOM, object.getString("Nom"));
+                    editor.putString(PREF_KEY_PRENOM, object.getString("Prenom"));
+                    editor.putString(PREF_KEY_EMAIL, object.getString("Email"));
+                    editor.putString(PREF_KEY_TEL, object.getString("Tel"));
+                    editor.putInt(PREF_KEY_GENRE, object.getInt("Genre"));
+                    editor.putString(PREF_KEY_PASSWORD, Password);
+                    editor.putBoolean(PREF_KEY_STATUS,Boolean.TRUE);
+                    editor.commit();
 
                     //mImageUrls.add(object.getString("Image"));
                     //mNames.add(object.getString("Titre"));
@@ -154,8 +160,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     e.printStackTrace();
                 }
             }
-            LoginErreur.setText("Bonjour "+mPreferences.getString(PREF_KEY_PRENOM, null));
-            startActivity(new Intent(this, MainActivity.class));
+           // LoginErreur.setText("Bonjour "+mPreferences.getString(PREF_KEY_PRENOM, null));
+            //startActivity(new Intent(this, MainActivity.class));
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
 
         }
         else {

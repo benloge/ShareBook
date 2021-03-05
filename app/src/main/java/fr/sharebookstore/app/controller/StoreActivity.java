@@ -5,24 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import fr.sharebookstore.app.R;
-import fr.sharebookstore.app.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.RecyclerViewAdapter;
+import fr.sharebookstore.app.utils.Navigation;
 
-public class StoreActivity extends AppCompatActivity {
+public class StoreActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView nouveaute_clickable;
     TextView tendance_clickable;
@@ -32,7 +27,8 @@ public class StoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
-        setBottomNavigation();
+        Navigation.SetTopToolbar(StoreActivity.this, this);
+        Navigation.setBottomNavigation(StoreActivity.this,this,R.id.action_store);
         getImages();
 
         nouveaute_clickable=(TextView)findViewById(R.id.store_nouveaute);
@@ -53,46 +49,6 @@ public class StoreActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void setBottomNavigation() {
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_store);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            public boolean onNavigationItemSelected() {
-                return onNavigationItemSelected();
-            }
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String classname = this.getClass().getName();
-                switch (item.getItemId()) {
-                    case R.id.action_accueil:
-                        if (!classname.contains("MainActivity")) {
-                            startActivity(new Intent(StoreActivity.this, MainActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_store:
-                        if (!classname.contains("StoreActivity")) {
-                            startActivity(new Intent(StoreActivity.this, StoreActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_biblio:
-                        if (!classname.contains("BiblioActivity")) {
-                            startActivity(new Intent(StoreActivity.this, BiblioActivity.class));
-                        }
-                        break;
-                    case R.id.action_panier:
-                        if (!classname.contains("PanierActivity")) {
-                            startActivity(new Intent(StoreActivity.this, PanierActivity.class));
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
 
@@ -146,9 +102,13 @@ public class StoreActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
         RecyclerView recyclerView = findViewById(i);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image, "Product");
         recyclerView.setAdapter(adapter);
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Navigation.OnclickTopToolbar(v,this);
+    }
 }

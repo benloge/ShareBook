@@ -2,27 +2,18 @@ package fr.sharebookstore.app.controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
-import fr.sharebookstore.app.RecyclerViewAdapter;
-import fr.sharebookstore.app.utils.NetworkAsyncTask;
+import fr.sharebookstore.app.utils.Navigation;
 
 public class PanierActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -34,16 +25,9 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panier);
-
-        Button buttonCompte = (Button) findViewById(R.id.CompteButton);
-
-        buttonCompte.setTag(0);
-
-        buttonCompte.setOnClickListener(this);
-
-        setBottomNavigation();
+        Navigation.setBottomNavigation(PanierActivity.this,this,R.id.action_panier);
+        Navigation.SetTopToolbar(PanierActivity.this, this);
     }
-
 
 
     private void setBottomNavigation() {
@@ -88,14 +72,7 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        int action = (int) v.getTag();
-        String classname = this.getClass().getName();
-        switch (action) {
-            case 0:
-                startActivity(new Intent(this, CompteActivity.class));
-                break;
-
-        }
+        Navigation.OnclickTopToolbar(v,this);
     }
 
 }
