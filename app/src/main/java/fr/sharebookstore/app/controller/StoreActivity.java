@@ -37,7 +37,9 @@ public class StoreActivity extends AppCompatActivity implements View.OnClickList
         nouveaute_clickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(StoreActivity.this,NouveauteActivity.class);
+                Intent intent = new Intent(StoreActivity.this, CategorieActivity.class);
+                intent.putExtra("EXTRA_SESSION_NAME", "Nouveautés");
+                intent.putExtra("EXTRA_SESSION_TYPE", "Nouveaute");
                 startActivity(intent);
             }
         });
@@ -46,7 +48,9 @@ public class StoreActivity extends AppCompatActivity implements View.OnClickList
         tendance_clickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(StoreActivity.this,TendanceActivity.class);
+                Intent intent = new Intent(StoreActivity.this, CategorieActivity.class);
+                intent.putExtra("EXTRA_SESSION_NAME", "Tendance");
+                intent.putExtra("EXTRA_SESSION_TYPE", "Tendance");
                 startActivity(intent);
             }
         });
@@ -75,19 +79,11 @@ public class StoreActivity extends AppCompatActivity implements View.OnClickList
         new NetworkRecyclerViewDocument(this, StoreActivity.this, R.id.store_tendanceView,"ListHorizontal").execute(requeteTendance);
         new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_genreView,"genre").execute(requeteGenre);
         new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_typeView,"type").execute(requeteType);
-        new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_auteurView,"type").execute(requeteAuteur);
+        new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_auteurView,"auteur").execute(requeteAuteur);
 
 
     }
-    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> image ){
-        Log.d(TAG,  "initRecyclerView: init recyclerview");
 
-        LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(i);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image, "Product");
-        recyclerView.setAdapter(adapter);
-    }
 
 
     @Override

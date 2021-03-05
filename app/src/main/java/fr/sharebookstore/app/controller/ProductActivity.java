@@ -21,46 +21,11 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
         Navigation.SetTopToolbar(ProductActivity.this, this);
+        GetProduct();
     }
 
-    private void setBottomNavigation() {
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_store);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            public boolean onNavigationItemSelected() {
-                return onNavigationItemSelected();
-            }
+    private void GetProduct() {
 
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String classname = this.getClass().getName();
-                switch (item.getItemId()) {
-                    case R.id.action_accueil:
-                        if (!classname.contains("MainActivity")) {
-                            startActivity(new Intent(ProductActivity.this, MainActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_store:
-                        if (!classname.contains("StoreActivity")) {
-                            // startActivity(new Intent(ProductActivity.this, StoreActivity.class));
-                        }
-
-                        break;
-                    case R.id.action_biblio:
-                        if (!classname.contains("BiblioActivity")) {
-                            startActivity(new Intent(ProductActivity.this, BiblioActivity.class));
-                        }
-                        break;
-                    case R.id.action_panier:
-                        if (!classname.contains("PanierActivity")) {
-                            startActivity(new Intent(ProductActivity.this, PanierActivity.class));
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     @Override

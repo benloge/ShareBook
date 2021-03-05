@@ -74,15 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> image ){
-        Log.d(TAG,  "initRecyclerView: init recyclerview");
-
-        LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(i);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image, "Product");
-        recyclerView.setAdapter(adapter);
-    }
 
     private void setBienvenue() {
         TextView welcome = (TextView) findViewById(R.id.welcome);

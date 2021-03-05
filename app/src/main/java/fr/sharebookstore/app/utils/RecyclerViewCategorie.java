@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.controller.BookViewActivity;
+import fr.sharebookstore.app.controller.CategorieActivity;
 import fr.sharebookstore.app.controller.CompteActivity;
 import fr.sharebookstore.app.controller.ProductActivity;
 
@@ -30,13 +31,13 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<RecyclerViewCate
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mId = new ArrayList<>();
     private Context mContext;
     private String mType;
 
-    public RecyclerViewCategorie(Context context, ArrayList<String> names, ArrayList<String> imageUrls, String Type) {
+    public RecyclerViewCategorie(Context context, ArrayList<String> names, ArrayList<Integer> id, String Type) {
         mNames = names;
-        mImageUrls = imageUrls;
+        mId = id;
         mContext = context;
         mType = Type;
     }
@@ -57,6 +58,11 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<RecyclerViewCate
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on an image:" +mNames.get(position));
+                Intent intent = new Intent(mContext, CategorieActivity.class);
+                intent.putExtra("EXTRA_SESSION_ID", String.valueOf(mId.get(position)));
+                intent.putExtra("EXTRA_SESSION_NAME", mNames.get(position));
+                intent.putExtra("EXTRA_SESSION_TYPE", mType);
+                mContext.startActivity(intent);
                 Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
 
 
@@ -67,7 +73,7 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<RecyclerViewCate
 
     @Override
     public int getItemCount() {
-        return mImageUrls.size();
+        return mId.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

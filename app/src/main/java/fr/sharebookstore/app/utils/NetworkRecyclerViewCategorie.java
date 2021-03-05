@@ -22,7 +22,7 @@ public class NetworkRecyclerViewCategorie extends android.os.AsyncTask<String, V
     private int RecyclerView;
     private String mCategorieType;
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mID = new ArrayList<>();
+    private ArrayList<Integer> mID = new ArrayList<>();
 
     public NetworkRecyclerViewCategorie(Context myContext, Activity myActivity, int RecyclerView, String CategorieType) {
         this.myActivity = myActivity;
@@ -53,7 +53,7 @@ public class NetworkRecyclerViewCategorie extends android.os.AsyncTask<String, V
         {
             try {
                 JSONObject object = array.getJSONObject(i);
-                mID.add(object.getString("1"));
+                mID.add(object.getInt("0"));
                 mNames.add(object.getString("Nom"));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -63,7 +63,7 @@ public class NetworkRecyclerViewCategorie extends android.os.AsyncTask<String, V
 
     }
 
-    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> id ){
+    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<Integer> id ){
 
 
         LinearLayoutManager layoutManager =  new LinearLayoutManager( myContext, LinearLayoutManager.HORIZONTAL,  false);
