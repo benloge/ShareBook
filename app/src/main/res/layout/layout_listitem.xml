@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -28,25 +28,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:maxWidth="200dp"
-                android:maxHeight="200dp"
+                android:maxWidth="150dp"
+                android:maxHeight="160dp"
                 android:scaleType="fitCenter"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/livre_exemple_foreground" />
+                android:src="@drawable/livre_exemple_foreground" >
+
+            </ImageView>
 
             <TextView
                 android:id="@+id/titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hello"
-                android:textSize="17dp"
+                android:textSize="15dp"
                 android:layout_below="@id/image_book"
                 android:layout_centerHorizontal="true"
-                android:layout_alignLeft="@+id/image_book"
-                android:layout_alignRight="@+id/image_book"
                 android:gravity="center"
-                android:maxWidth="200dp"
-                ></TextView>
+                android:maxWidth="150dp"
+                >
+
+            </TextView>
 
         </RelativeLayout>
 

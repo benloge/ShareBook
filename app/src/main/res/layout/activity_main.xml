@@ -87,22 +87,23 @@
             </androidx.recyclerview.widget.RecyclerView>
 
 
-
-
             <Button
                 android:id="@+id/pub"
-                android:text="Des millions de livres à porté de main"
+                android:text="Des millions de livres à porté de main,          Abonnez-vous."
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:textSize="25dp"
+                android:inputType="textMultiLine"
                 android:textColor="@color/white"
                 android:fontFamily="@font/keepcalm"
                 android:background="@drawable/pub_abo"
                 >
 
             </Button>
+
+
 
         </TableLayout>
 
