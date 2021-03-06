@@ -60,4 +60,7 @@ dependencies {
     //pdf
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
+    //gradiantTextView
+    implementation 'com.github.livesun:GradientTextView:v1.0'
+
 }

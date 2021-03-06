@@ -9,62 +9,78 @@
     <include layout="@layout/top_toolbar"></include>
     <include layout="@layout/bottom_toolbar"></include>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize"
+        >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/titre"
+            android:id="@+id/Product_Titre"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:gravity="center"
-            android:text="Titre"
             android:textColor="#050505"
             android:textSize="25sp"
             android:textStyle="bold|italic"></TextView>
         <ImageView
+            android:id="@+id/Product_Image"
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="150dp"/>
         <TextView
             android:id="@+id/Product_Auteur"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Résumé :"
+            android:text="Auteur : "
             android:textColor="#CA9C3F"
-            android:textSize="25sp"
+            android:textSize="15dp"
+            android:textStyle="bold|italic"></TextView>
+        <TextView
+            android:id="@+id/Product_Resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Résumé : "
+            android:textColor="#CA9C3F"
+            android:textSize="15dp"
             android:textStyle="bold|italic"></TextView>
         <TextView
             android:id="@+id/Product_Parution"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Date de parution :"
+            android:text="Date de parution : "
             android:textColor="#FFBF00"
-            android:textSize="25sp"
+            android:textSize="15dp"
             android:textStyle="bold|italic"></TextView>
         <TextView
             android:id="@+id/Product_Page"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Nombre de page :"
+            android:text="Nombre de page : "
             android:textColor="#58C2EC"
-            android:textSize="25sp"
+            android:textSize="15dp"
             android:textStyle="bold|italic"></TextView>
         <TextView
             android:id="@+id/Product_Langue"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text=" Langue :"
+            android:text=" Langue : "
             android:textColor="#E44747"
-            android:textSize="25sp"
+            android:textSize="15dp"
             android:textStyle="bold|italic"></TextView>
 
         <LinearLayout
@@ -107,4 +123,5 @@
             android:textStyle="bold|italic"
             android:layout_height="wrap_content"></TextView>
         </LinearLayout>
+    </ScrollView>
     </RelativeLayout>
