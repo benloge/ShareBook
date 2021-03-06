@@ -41,6 +41,9 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
     private ArrayList<Integer> mNote = new ArrayList<>();
     private ArrayList<String> mCommentaire = new ArrayList<>();
     private ArrayList<String> mDate = new ArrayList<>();
+    private ArrayList<String> mTypeVente = new ArrayList<>();
+    private ArrayList<Float> mPrix = new ArrayList<>();
+    private ArrayList<Integer> mDuree = new ArrayList<>();
 
 
     public NetworkProduct(Context myContext, Activity myActivity, String ID, String Action) {
@@ -73,6 +76,9 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
         }
         else if (myAction.contains("Avis")) {
             GetAvis(array);
+        }
+        else if (myAction.contains("Vente")) {
+            GetVente(array);
         }
 
     }
@@ -140,6 +146,29 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
     private void SetAvis() {
         androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) myActivity.findViewById(R.id.Product_Avis);
         RecyclerViewAvis myAdapter = new RecyclerViewAvis(myContext,mPseudo,mNote,mCommentaire,mDate);
+        myrv.setLayoutManager(new GridLayoutManager(myContext,1));
+        myrv.setAdapter(myAdapter);
+    }
+
+    private void GetVente(JSONArray array)
+    {
+        for(int i = 0; i < array.length(); i++)
+        {
+            try {
+                JSONObject object = array.getJSONObject(i);
+                mTypeVente.add(object.getString("Type_de_vente"));
+                mPrix.add(Float.parseFloat(object.getString("Prix")));
+                mDuree.add(object.getInt("Duree"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        SetVente();
+    }
+
+    private void SetVente() {
+        androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) myActivity.findViewById(R.id.Product_Vente);
+        RecyclerViewVente myAdapter = new RecyclerViewVente(myContext,mTypeVente,mPrix,mDuree);
         myrv.setLayoutManager(new GridLayoutManager(myContext,1));
         myrv.setAdapter(myAdapter);
     }

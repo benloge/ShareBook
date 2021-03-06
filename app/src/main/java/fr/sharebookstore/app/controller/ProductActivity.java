@@ -34,15 +34,15 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         Navigation.setBottomNavigation(ProductActivity.this,this,R.id.action_store);
         Navigation.SetTopToolbar(ProductActivity.this, this);
 
-        TextView Text = (TextView) findViewById(R.id.Product_Auteur);
-        Point size = new Point(Text.getWidth(),Text.getHeight());
-        int[] colors = new int[2];
-        for (int i=0; i<2;i++){
-            colors[i]= Color.HSVToColor(255,new float[]{mRandom.nextInt(361),1.0f,1.0f});
-        }
-        LinearGradient gradient = new LinearGradient(0,0,size.x,size.y,Color.HSVToColor(255,new float[]{mRandom.nextInt(361),1.0f,1.0f}),Color.HSVToColor(255,new float[]{mRandom.nextInt(361),1.0f,1.0f}),Shader.TileMode.REPEAT);
-        Shader shade = gradient;
-        Text.getPaint().setShader(shade);
+        //TextView Text = (TextView) findViewById(R.id.Product_Auteur);
+        //Point size = new Point(Text.getWidth(),Text.getHeight());
+        //int[] colors = new int[2];
+        //for (int i=0; i<2;i++){
+        //    colors[i]= Color.HSVToColor(255,new float[]{mRandom.nextInt(361),1.0f,1.0f});
+       // }
+       // LinearGradient gradient = new LinearGradient(0,0,size.x,size.y,Color.HSVToColor(255,new float[]{mRandom.nextInt(361),1.0f,1.0f}),Color.HSVToColor(255,new float[]{mRandom.nextInt(361),1.0f,1.0f}),Shader.TileMode.REPEAT);
+        //Shader shade = gradient;
+        //Text.getPaint().setShader(shade);
 
         GetInformation();
 
@@ -53,7 +53,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         String Name = getIntent().getStringExtra("EXTRA_SESSION_NAME");
         String requeteSimpleDocInfo = "http://18.159.181.250/api/documents.php?id="+Id;
         String requeteAvis = "http://18.159.181.250/api/documents.php?action=avis&id="+Id;
+        String requeteVente = "http://18.159.181.250/api/documents.php?action=vente&id="+Id;
         new NetworkProduct(this, ProductActivity.this, Id,"SimpleDocInfo").execute(requeteSimpleDocInfo);
+        new NetworkProduct(this,ProductActivity.this,Id,"Vente").execute(requeteVente);
         new NetworkProduct(this, ProductActivity.this, Id,"Avis").execute(requeteAvis);
 
     }

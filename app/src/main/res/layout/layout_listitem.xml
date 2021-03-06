@@ -44,6 +44,8 @@
                 android:textSize="15dp"
                 android:layout_below="@id/image_book"
                 android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/image_book"
+                android:layout_alignRight="@+id/image_book"
                 android:gravity="center"
                 android:maxWidth="150dp"
                 >
