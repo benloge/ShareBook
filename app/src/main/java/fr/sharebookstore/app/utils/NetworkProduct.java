@@ -5,6 +5,9 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
@@ -12,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import fr.sharebookstore.app.R;
 
@@ -33,6 +37,10 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
     private String mEditeur;
     private String mCollection;
     private int mPage;
+    private ArrayList<String> mPseudo = new ArrayList<>();
+    private ArrayList<Integer> mNote = new ArrayList<>();
+    private ArrayList<String> mCommentaire = new ArrayList<>();
+    private ArrayList<String> mDate = new ArrayList<>();
 
 
     public NetworkProduct(Context myContext, Activity myActivity, String ID, String Action) {
@@ -60,11 +68,12 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        switch (myAction) {
-            case "SimpleDocInfo":
-                GetSimpleDocumentInfo(array);
+        if (myAction.contains("SimpleDocInfo")) {
+            GetSimpleDocumentInfo(array);
         }
-
+        else if (myAction.contains("Avis")) {
+            GetAvis(array);
+        }
 
     }
 
@@ -110,5 +119,28 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
                 .load(mImgUrl)
                 .into(Image);
 
+    }
+
+    private void GetAvis(JSONArray array) {
+        for(int i = 0; i < array.length(); i++)
+        {
+            try {
+                JSONObject object = array.getJSONObject(i);
+                mPseudo.add(object.getString("Pseudo"));
+                mNote.add(object.getInt("note"));
+                mCommentaire.add(object.getString("commentaire"));
+                mDate.add(object.getString("Date"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        SetAvis();
+    }
+
+    private void SetAvis() {
+        androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) myActivity.findViewById(R.id.Product_Avis);
+        RecyclerViewAvis myAdapter = new RecyclerViewAvis(myContext,mPseudo,mNote,mCommentaire,mDate);
+        myrv.setLayoutManager(new GridLayoutManager(myContext,1));
+        myrv.setAdapter(myAdapter);
     }
 }

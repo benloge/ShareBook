@@ -52,7 +52,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         String Id = getIntent().getStringExtra("EXTRA_SESSION_ID");
         String Name = getIntent().getStringExtra("EXTRA_SESSION_NAME");
         String requeteSimpleDocInfo = "http://18.159.181.250/api/documents.php?id="+Id;
+        String requeteAvis = "http://18.159.181.250/api/documents.php?action=avis&id="+Id;
         new NetworkProduct(this, ProductActivity.this, Id,"SimpleDocInfo").execute(requeteSimpleDocInfo);
+        new NetworkProduct(this, ProductActivity.this, Id,"Avis").execute(requeteAvis);
 
     }
 

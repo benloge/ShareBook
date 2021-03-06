@@ -54,7 +54,7 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<RecyclerViewCate
 
         holder.button.setText(mNames.get(position));
 
-        int setcolorbutton = position % 8;
+        int setcolorbutton = position % 9;
 
         switch (setcolorbutton) {
             case 0:
@@ -79,6 +79,9 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<RecyclerViewCate
                 holder.button.setBackground(mContext.getDrawable(R.drawable.colorgreen));
                 break;
             case 7:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colordrarkgreen));
+                break;
+            case 8:
                 holder.button.setBackground(mContext.getDrawable(R.drawable.colorlightblue));
                 break;
         }
