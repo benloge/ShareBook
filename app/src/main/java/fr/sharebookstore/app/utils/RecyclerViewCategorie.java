@@ -54,6 +54,35 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<RecyclerViewCate
 
         holder.button.setText(mNames.get(position));
 
+        int setcolorbutton = position % 8;
+
+        switch (setcolorbutton) {
+            case 0:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colorblue));
+                break;
+            case 1:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colorpurple));
+                break;
+            case 2:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colorpink));
+                break;
+            case 3:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colorred));
+                break;
+            case 4:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colororange));
+                break;
+            case 5:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.coloryellow));
+                break;
+            case 6:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colorgreen));
+                break;
+            case 7:
+                holder.button.setBackground(mContext.getDrawable(R.drawable.colorlightblue));
+                break;
+        }
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

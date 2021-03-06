@@ -8,9 +8,8 @@
     android:id="@+id/Categorie_Button"
     android:layout_weight="1"
     android:text="Fiction"
-    android:background="@drawable/roundbutton"
+    android:background="@drawable/colorblue"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     />
