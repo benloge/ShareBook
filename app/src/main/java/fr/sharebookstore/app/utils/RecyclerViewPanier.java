@@ -188,7 +188,6 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<RecyclerViewPanier.
 
     private JSONObject GetBookJSON(int position) {
         ArrayList<String> BootArray = new ArrayList<>(mPreferences.getStringSet(PREF_KEY_OBJECT_BOOK, new HashSet<String>()));
-        Gson gson = new Gson();
         String json = BootArray.get(position);
         try {
             JSONObject jsonbook = new JSONObject(json);
