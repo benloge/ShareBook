@@ -30,14 +30,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mID = new ArrayList<>();
     private Context mContext;
     private String mType;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, String Type) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<Integer> ID, String Type) {
         mNames = names;
         mImageUrls = imageUrls;
         mContext = context;
         mType = Type;
+        mID = ID;
     }
 
     @Override
@@ -67,7 +69,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         break;
                     case "Store":
                         Intent intent = new Intent(mContext, ProductActivity.class);
-                        intent.putExtra("Product_ID", mNames.get(position));
+                        intent.putExtra("EXTRA_SESSION_ID", String.valueOf(mID.get(position)));
+                        intent.putExtra("EXTRA_SESSION_NAME", mNames.get(position));
                         mContext.startActivity(intent);
                     default:
                         Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();

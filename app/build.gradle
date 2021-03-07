@@ -60,4 +60,10 @@ dependencies {
     //pdf
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
+    //gradiantTextView
+    implementation 'com.github.livesun:GradientTextView:v1.0'
+
+    //listobject
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 }

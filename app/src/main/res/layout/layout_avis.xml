@@ -1,0 +1,66 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView_Avis"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardCornerRadius="4dp"
+    app:cardMaxElevation="2dp"
+    app:cardElevation="1dp"
+    android:layout_centerInParent="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/avis_pseudo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Pseudo"
+            android:textSize="17dp"
+            android:gravity="left"
+            />
+
+        <RatingBar
+            android:id="@+id/avis_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avis_pseudo"
+            android:layout_marginLeft="10dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:theme="@style/RatingBar"
+            />
+        <TextView
+            android:id="@+id/avis_commentaire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/avis_rating"
+            android:text="Commentaire"
+            android:textSize="17dp"
+            android:gravity="left"
+            />
+        <TextView
+            android:id="@+id/avis_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/avis_commentaire"
+            android:text="Date"
+            android:textSize="17dp"
+            android:gravity="left"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

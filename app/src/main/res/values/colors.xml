@@ -25,4 +25,8 @@
     <color name="colorTextHint">#51d8c7</color>
     <color name="color_erreur">#B30729</color>
 
+    //ratingbar
+    <color name="ColorStar">#FFEB3B</color>
+
+
 </resources>

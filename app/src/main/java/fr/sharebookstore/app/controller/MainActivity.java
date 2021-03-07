@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -73,15 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> image ){
-        Log.d(TAG,  "initRecyclerView: init recyclerview");
-
-        LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(i);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image, "Product");
-        recyclerView.setAdapter(adapter);
-    }
 
     private void setBienvenue() {
         TextView welcome = (TextView) findViewById(R.id.welcome);
@@ -92,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else {
             welcome.setText("BIENVENUE SUR SHAREBOOK");
         }
+
 
 
     }

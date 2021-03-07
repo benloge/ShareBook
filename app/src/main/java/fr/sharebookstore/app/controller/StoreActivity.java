@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import fr.sharebookstore.app.R;
+import fr.sharebookstore.app.utils.NetworkRecyclerViewCategorie;
+import fr.sharebookstore.app.utils.NetworkRecyclerViewDocument;
 import fr.sharebookstore.app.utils.RecyclerViewAdapter;
 import fr.sharebookstore.app.utils.Navigation;
 
@@ -35,7 +37,9 @@ public class StoreActivity extends AppCompatActivity implements View.OnClickList
         nouveaute_clickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(StoreActivity.this,NouveauteActivity.class);
+                Intent intent = new Intent(StoreActivity.this, CategorieActivity.class);
+                intent.putExtra("EXTRA_SESSION_NAME", "Nouveautés");
+                intent.putExtra("EXTRA_SESSION_TYPE", "Nouveaute");
                 startActivity(intent);
             }
         });
@@ -44,7 +48,9 @@ public class StoreActivity extends AppCompatActivity implements View.OnClickList
         tendance_clickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(StoreActivity.this,TendanceActivity.class);
+                Intent intent = new Intent(StoreActivity.this, CategorieActivity.class);
+                intent.putExtra("EXTRA_SESSION_NAME", "Tendance");
+                intent.putExtra("EXTRA_SESSION_TYPE", "Tendance");
                 startActivity(intent);
             }
         });
@@ -63,48 +69,21 @@ public class StoreActivity extends AppCompatActivity implements View.OnClickList
     private void getImages(){
         Log.d(TAG, "IniImageBitmaps : preparing bitmaps.");
 
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
-        mImageUrls.add("http://18.159.181.250/image/bel-ami_Guy_de_Maupassant.jpg");
-        mNames.add("Bel-Ami");
+        String requeteNouvaute = "http://18.159.181.250/api/documents.php";
+        String requeteTendance = "http://18.159.181.250/api/documents.php";
+        String requeteGenre = "http://18.159.181.250/api/genre_litteraire.php";
+        String requeteType = "http://18.159.181.250/api/types.php";
+        String requeteAuteur = "http://18.159.181.250/api/auteur.php";
 
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-        mImageUrls2.add("http://18.159.181.250/image/les_avantures_de_Sherlock_Holmes_Arthur_Conan_Doyle.jpg");
-        mNames2.add("Les Aventures de Sherlock Holmes");
-
-        initRecyclerView(R.id.store_nouveauteView, mNames, mImageUrls);
-        initRecyclerView(R.id.store_tendanceView, mNames2, mImageUrls2);
+        new NetworkRecyclerViewDocument(this, StoreActivity.this, R.id.store_nouveauteView,"ListHorizontal").execute(requeteNouvaute);
+        new NetworkRecyclerViewDocument(this, StoreActivity.this, R.id.store_tendanceView,"ListHorizontal").execute(requeteTendance);
+        new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_genreView,"genre").execute(requeteGenre);
+        new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_typeView,"type").execute(requeteType);
+        new NetworkRecyclerViewCategorie(this,StoreActivity.this, R.id.store_auteurView,"auteur").execute(requeteAuteur);
 
 
     }
-    private void initRecyclerView(int i, ArrayList<String> name, ArrayList<String> image ){
-        Log.d(TAG,  "initRecyclerView: init recyclerview");
 
-        LinearLayoutManager layoutManager =  new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL,  false);
-        RecyclerView recyclerView = findViewById(i);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( this, name, image, "Product");
-        recyclerView.setAdapter(adapter);
-    }
 
 
     @Override

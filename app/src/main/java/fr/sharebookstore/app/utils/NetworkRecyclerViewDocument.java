@@ -26,6 +26,7 @@ public class NetworkRecyclerViewDocument extends android.os.AsyncTask<String, Vo
     private String viewType;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mID = new ArrayList<>();
 
     public NetworkRecyclerViewDocument(Context myContext, Activity myActivity, int RecyclerView, String viewtype) {
         this.myActivity = myActivity;
@@ -56,6 +57,7 @@ public class NetworkRecyclerViewDocument extends android.os.AsyncTask<String, Vo
         {
             try {
                 JSONObject object = array.getJSONObject(i);
+                mID.add(object.getInt("ID_Document"));
                 mImageUrls.add(object.getString("Image"));
                 mNames.add(object.getString("Titre"));
             } catch (JSONException e) {
@@ -71,7 +73,13 @@ public class NetworkRecyclerViewDocument extends android.os.AsyncTask<String, Vo
 
         if (viewType == "ListVertical") {
             androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) myActivity.findViewById(i);
-            RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(myContext,name,image,"Lecture");
+            RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(myContext,name,image,mID,"Lecture");
+            myrv.setLayoutManager(new GridLayoutManager(myContext,3));
+            myrv.setAdapter(myAdapter);
+        }
+        else if (viewType == "StoreVertical") {
+            androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) myActivity.findViewById(i);
+            RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(myContext,name,image,mID,"Store");
             myrv.setLayoutManager(new GridLayoutManager(myContext,3));
             myrv.setAdapter(myAdapter);
         }
@@ -79,7 +87,7 @@ public class NetworkRecyclerViewDocument extends android.os.AsyncTask<String, Vo
             LinearLayoutManager layoutManager =  new LinearLayoutManager( myContext, LinearLayoutManager.HORIZONTAL,  false);
             androidx.recyclerview.widget.RecyclerView recyclerView = myActivity.findViewById(i);
             recyclerView.setLayoutManager(layoutManager);
-            RecyclerViewAdapter adapter = new RecyclerViewAdapter( myContext, name, image,"Store");
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter( myContext, name, image,mID,"Store");
             recyclerView.setAdapter(adapter);
         }
     }

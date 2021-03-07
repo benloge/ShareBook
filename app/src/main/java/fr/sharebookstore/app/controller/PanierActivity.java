@@ -2,6 +2,8 @@ package fr.sharebookstore.app.controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 
 import fr.sharebookstore.app.R;
 import fr.sharebookstore.app.utils.Navigation;
+import fr.sharebookstore.app.utils.RecyclerViewPanier;
+import fr.sharebookstore.app.utils.RecyclerViewVente;
 
 public class PanierActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -27,6 +31,7 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
         setContentView(R.layout.activity_panier);
         Navigation.setBottomNavigation(PanierActivity.this,this,R.id.action_panier);
         Navigation.SetTopToolbar(PanierActivity.this, this);
+        SetPanier();
     }
 
 
@@ -73,6 +78,13 @@ public class PanierActivity extends AppCompatActivity  implements View.OnClickLi
     @Override
     public void onClick(View v) {
         Navigation.OnclickTopToolbar(v,this);
+    }
+
+    private void SetPanier() {
+        androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) findViewById(R.id.Panier_View);
+        RecyclerViewPanier myAdapter = new RecyclerViewPanier(PanierActivity.this,this);
+        myrv.setLayoutManager(new GridLayoutManager(PanierActivity.this,1));
+        myrv.setAdapter(myAdapter);
     }
 
 }
