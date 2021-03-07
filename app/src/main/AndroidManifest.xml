@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShareBook"
         android:usesCleartextTraffic="true">
-        <activity android:name=".controller.BookViewActivity"></activity>
+        <activity android:name=".controller.UpdateAccountActivity"></activity>
+        <activity android:name=".controller.NewAccountActivity" />
+        <activity android:name=".controller.BookViewActivity" />
         <activity android:name=".controller.TendanceActivity" />
-        <activity android:name=".controller.ProductActivity"></activity>
+        <activity android:name=".controller.ProductActivity" />
         <activity android:name=".controller.NouveauteActivity" />
         <activity android:name=".controller.StoreActivity" />
         <activity
