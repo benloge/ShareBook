@@ -74,6 +74,9 @@ public class CompteActivity extends AppCompatActivity implements View.OnClickLis
                     case "S'authentifier":
                         startActivity(new Intent(CompteActivity.this, LoginActivity.class));
                         break;
+                    case "Modifier Compte":
+                        startActivity(new Intent(CompteActivity.this, UpdateAccountActivity.class));
+                        break;
                     case "Déconnexion":
                         mPreferences.edit().clear().commit();
                         startActivity(new Intent(CompteActivity.this, MainActivity.class));

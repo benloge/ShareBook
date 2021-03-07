@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connectez vous"
+        android:text="Modifiez votre compte"
         android:textColor="@color/dark"
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
@@ -38,7 +38,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
         android:text="Pseudo :"
-     />
+        />
 
 
 
@@ -52,22 +52,14 @@
         android:layout_marginRight="20dp"
         android:inputType="textPersonName"
         android:hint="Pseudo" />
-    <TextView
-        android:id="@+id/Pseudo_erreur"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/color_erreur"/>
+
 
 
     <TextView
         android:id="@+id/textView_Mdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
         android:text="Mot de Passe :" />
@@ -82,15 +74,7 @@
         android:layout_marginRight="20dp"
         android:inputType="textPassword"
         android:hint="Mot de Passe"/>
-    <TextView
-        android:id="@+id/Mdp_erreur"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/color_erreur"/>
+
 
 
     <Button
@@ -98,18 +82,11 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:maxWidth="400dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="Login"/>
 
-    <TextView
-        android:id="@+id/Login_erreur"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/color_erreur"/>
+
 
 </LinearLayout>

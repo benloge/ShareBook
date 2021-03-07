@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".controller.LoginActivity">
-    >
+
     <include layout="@layout/top_toolbar"></include>
 
 
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connectez vous"
+        android:text="Ajout d'un nouvel utilisateur"
         android:textColor="@color/dark"
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
@@ -37,10 +37,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="20dp"
-        android:text="Pseudo :"
-     />
-
-
+        android:text="Pseudo :" />
 
     <EditText
         android:id="@+id/editText_Pseudo"
@@ -52,16 +49,46 @@
         android:layout_marginRight="20dp"
         android:inputType="textPersonName"
         android:hint="Pseudo" />
+
     <TextView
-        android:id="@+id/Pseudo_erreur"
+        android:id="@+id/textView_Nom"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/color_erreur"/>
+        android:layout_marginLeft="20dp"
+        android:text="Nom :" />
 
+    <EditText
+        android:id="@+id/editText_Nom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:maxWidth="400dp"
+        android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="textPersonName"
+        android:hint="Nom" />
+
+    <TextView
+        android:id="@+id/textView_Prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:text="Prénom :" />
+
+    <EditText
+        android:id="@+id/editText_Prenom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:maxWidth="400dp"
+        android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="textPersonName"
+        android:hint="Prénom" />
 
     <TextView
         android:id="@+id/textView_Mdp"
@@ -82,15 +109,7 @@
         android:layout_marginRight="20dp"
         android:inputType="textPassword"
         android:hint="Mot de Passe"/>
-    <TextView
-        android:id="@+id/Mdp_erreur"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/color_erreur"/>
+
 
 
     <Button
@@ -98,9 +117,10 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:maxWidth="400dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="Login"/>
+        android:text="Créer le compte"/>
 
     <TextView
         android:id="@+id/Login_erreur"
@@ -111,5 +131,7 @@
         android:layout_gravity="center"
         android:text=""
         android:textColor="@color/color_erreur"/>
+
+    <include layout="@layout/bottom_toolbar"></include>
 
 </LinearLayout>
