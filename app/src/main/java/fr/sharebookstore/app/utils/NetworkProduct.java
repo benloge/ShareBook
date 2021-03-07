@@ -44,6 +44,9 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
     private ArrayList<String> mTypeVente = new ArrayList<>();
     private ArrayList<Float> mPrix = new ArrayList<>();
     private ArrayList<Integer> mDuree = new ArrayList<>();
+    private ArrayList<Integer> mID = new ArrayList<>();
+    private ArrayList<String> mVenteTitre = new ArrayList<>();
+    private ArrayList<String> mVenteImgUrl = new ArrayList<>();
 
 
     public NetworkProduct(Context myContext, Activity myActivity, String ID, String Action) {
@@ -159,6 +162,9 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
                 mTypeVente.add(object.getString("Type_de_vente"));
                 mPrix.add(Float.parseFloat(object.getString("Prix")));
                 mDuree.add(object.getInt("Duree"));
+                mID.add(object.getInt("ID_Document"));
+                mVenteTitre.add(object.getString("Titre"));
+                mVenteImgUrl.add(object.getString("Image"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -168,7 +174,7 @@ public class NetworkProduct extends android.os.AsyncTask<String, Void, String> {
 
     private void SetVente() {
         androidx.recyclerview.widget.RecyclerView myrv = (RecyclerView) myActivity.findViewById(R.id.Product_Vente);
-        RecyclerViewVente myAdapter = new RecyclerViewVente(myContext,mTypeVente,mPrix,mDuree);
+        RecyclerViewVente myAdapter = new RecyclerViewVente(myContext,mTypeVente,mPrix,mDuree,mID,mVenteTitre,mVenteImgUrl);
         myrv.setLayoutManager(new GridLayoutManager(myContext,1));
         myrv.setAdapter(myAdapter);
     }

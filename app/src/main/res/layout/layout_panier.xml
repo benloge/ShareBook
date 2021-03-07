@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView_Biblio"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardCornerRadius="4dp"
+    app:cardMaxElevation="2dp"
+    app:cardElevation="1dp"
+    android:layout_centerInParent="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/Panier_Image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="200dp"
+            android:maxHeight="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/livre_exemple_foreground" />
+
+        <TextView
+            android:id="@+id/Panier_titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/Panier_Image"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:maxWidth="200dp"
+            android:text="Titre"
+            android:textSize="17dp"></TextView>
+
+        <TextView
+            android:id="@+id/Panier_Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Panier_titre"
+            android:layout_alignLeft="@+id/Panier_titre"
+            android:maxWidth="200dp"
+            android:text="Type"
+            android:textSize="17dp"></TextView>
+
+        <TextView
+            android:id="@+id/Panier_Prix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Panier_Type"
+            android:layout_alignLeft="@+id/Panier_Type"
+            android:gravity="center"
+            android:maxWidth="200dp"
+            android:text="Prix"
+            android:textSize="17dp"></TextView>
+
+        <ImageButton
+            android:id="@+id/Panier_Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_delete_outline_black_18dp" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
