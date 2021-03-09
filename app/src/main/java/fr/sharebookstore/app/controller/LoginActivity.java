@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mPreferences = getSharedPreferences("user",MODE_PRIVATE);
 
         Navigation.SetTopToolbar(LoginActivity.this, this);
+        Navigation.setBottomNavigation(LoginActivity.this,this,R.id.action_accueil);
         initListeners();
         initObject();
     }
@@ -161,10 +162,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
            // LoginErreur.setText("Bonjour "+mPreferences.getString(PREF_KEY_PRENOM, null));
-            //startActivity(new Intent(this, MainActivity.class));
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
+            startActivity(new Intent(this, MainActivity.class));
+            //Intent returnIntent = new Intent();
+            //setResult(Activity.RESULT_OK,returnIntent);
+            //finish();
 
         }
         else {

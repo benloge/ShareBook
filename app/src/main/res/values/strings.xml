@@ -20,8 +20,8 @@
     <string name="text_register">S\'inscrire</string>
     <string name="error_message_name">Entrer Nom Complet</string>
     <string name="error_message_email">Entrer un Email valide</string>
-    <string name="error_message_age">Entre votre date de naissance</string>
-    <string name="error_message_password">Entrer votre Mdp</string>
+    <string name="error_message_age">Entrer votre date de naissance</string>
+    <string name="error_message_password">Entrer correctement votre mot de passe</string>
     <string name="success_message">Inscription Réussie</string>
     <string name="text_not_member">Pas de compte ? Créer en un</string>
     <string name="text_already_member">Déja membre? Login</string>

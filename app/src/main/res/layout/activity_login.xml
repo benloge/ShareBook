@@ -112,4 +112,6 @@
         android:text=""
         android:textColor="@color/color_erreur"/>
 
+    <include layout="@layout/bottom_toolbar"></include>
+
 </LinearLayout>
